@@ -1,0 +1,77 @@
+stage: stage6a_source_free_progressive_pairwise_assembly_v2
+development_only: true
+
+inputs:
+  exploratory_overlap_cohort:
+    path: ../results/k_longdoc_feasibility/stage3a_nested_cohort.json
+    sha256: 9e7e1a3225c4b7901eb38b842555c09b63383c3a42bf2d833b83e96999bc78bc
+  exploratory_overlap_strong_cache:
+    path: ../results/k_longdoc_strong/stage3bc_strong_top1_cache.json
+    sha256: c461497900f87a2bc269fd41ae0a13db6f4fd59c98c3cc2473a0f91a4037391f
+  exploratory_nooverlap_manifest:
+    path: ../results/stage5a_nooverlap_strong/stage5a_nooverlap_manifest.json
+    sha256: 96108281b3b261ca597db3070a85b790edebf1b04044265b17ffff8bb693a439
+  exploratory_nooverlap_strong_cache:
+    path: ../results/stage5a_nooverlap_strong/stage5a_nooverlap_strong_top1_cache.json
+    sha256: 799f0ac490b6ee5d506cb98bae551ecd8bb3996146bb30d6817611fe7b34c9ee
+
+cohort:
+  role: existing_stage3_4_exploratory_development_only
+  documents: 30
+  k: 8
+  stage5bc_holdout_used_for_tuning_or_inference: false
+
+geometry:
+  content_tokens: 31
+  stride_tokens: 15
+  nominal_overlap_tokens: 16
+  windows_per_document: 8
+  source_tokens_per_document: 136
+
+pairwise_assembly:
+  name: accumulated_progressive_fidelity_owned_constrained_semiglobal_v1
+  merge_order: merge_accumulated_output_with_next_window
+  alignment_inputs: reconstructed_top1_token_ids_only
+  allowed_alignment_region: adjacent_suffix_prefix_only
+  boundary_width_search: 14_to_18_tokens
+  max_boundary_shift: 2
+  deviation_cost: 0.5
+  fidelity_field: Candidate.local_score
+  fidelity_rule: maximum_window_embedding_fidelity
+  tie_tolerance: 1.0e-12
+  tie_rule: lower_window_index
+  multiplicity_3_endpoint_rule: lower_window_index
+  ground_truth_or_source_position_used_by_inference: false
+  global_dp_or_path_method_implemented: false
+  boundary_independent_pairwise_chain_reported_as_diagnostic: true
+
+evaluation:
+  primary: exact_matched_source_token_recovery_after_final_gt_alignment
+  bootstrap_iterations: 10000
+  bootstrap_seed: 20260910
+  resampling_unit: exploratory_document
+  # Descriptive cross-cohort reference only; never used by inference or the gate.
+  stage5c_reference_source_aligned_fidelity: 0.9894607843137255
+
+gate:
+  state_ready: SOURCE_FREE_ASSEMBLY_READY
+  state_fail: ASSEMBLY_MECHANISM_FAIL
+  requirements:
+    - method_point_estimate_gt_fixed_owner
+    - method_point_estimate_gte_nooverlap
+    - method_minus_fixed_owner_bootstrap_ci95_lower_gt_zero
+    - gain_recovery_ratio_gte_0.5
+
+output_dir: results/stage6a_source_free_assembly
+result_filename: stage6a_source_free_assembly.json
+trajectory_filename: stage6a_source_free_assembly_trajectories.json
+report_filename: stage6a_source_free_assembly.md
+
+scope_exclusions:
+  - vec2text_rerun
+  - stage5bc_holdout_tuning
+  - source_gt_inference_alignment
+  - global_dp_or_path_assembly
+  - learned_selector
+  - candidate_reranking
+  - decoder_training

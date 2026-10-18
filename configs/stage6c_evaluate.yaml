@@ -1,0 +1,31 @@
+stage: stage6c_final_evaluation_v1
+single_final_evaluation: true
+
+protocol:
+  path: stage6c_evaluation_protocol.yaml
+  sha256: 4ea89f40f20b457c1196b9f562d47059627541b253a2fc460f3d07d3b0854f63
+
+inputs:
+  algorithm_freeze:
+    path: ../results/stage6b_algorithm_freeze/stage6b_algorithm_freeze.json
+    sha256: d67b0a935d6fcb55ef708f89d8c3b43e2ddb1835466e59022c0e432c514241de
+  cohort_freeze:
+    path: ../results/stage6c_final_validation/stage6c_cohort_freeze.json
+    sha256: 588b6436aa7e09906ad0e0b99ebf7a1854d879793d47075069623cf888228b62
+  overlap_cohort:
+    path: ../results/stage6c_final_validation/stage6c_overlap_final_cohort.json
+    sha256: 357fc5457f107373479179ae9bb90715c1a44bc7811fc6d89a2b9443a96a1e2d
+  nooverlap_manifest:
+    path: ../results/stage6c_final_validation/stage6c_nooverlap_final_manifest.json
+    sha256: d1f8bec0e5ef8c70ae552ae753a9742af05a7405374d57e2c2fee4f8e49177b7
+  strong_generation_config:
+    path: stage6c_strong.yaml
+    sha256: 301c4e14995de172d9aaa4990354ae302639d3dfc1d492599f3ed670a85bc2c0
+  strong_cache:
+    path: ../results/stage6c_final_validation/stage6c_strong_top1_cache.json
+    sha256: 5eb23be26b774a40fa38257c86e3f1f3e46f99e1bba5ba97e800149d5429f035
+
+output_dir: results/stage6c_final_validation
+result_filename: stage6c_final_evaluation.json
+trajectory_filename: stage6c_final_trajectories.json
+report_filename: stage6c_final_evaluation.md

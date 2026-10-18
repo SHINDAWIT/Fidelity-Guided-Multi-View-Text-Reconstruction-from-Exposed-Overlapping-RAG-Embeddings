@@ -1,0 +1,89 @@
+stage: stage5d_source_oblivious_assembly_v1
+frozen_before_candidate_outputs_evaluated: true
+
+inputs:
+  holdout_summary:
+    path: ../results/stage5d_assembly/stage5d_holdout_manifest.json
+    sha256: 8c9af92f5aad2341c521e5c720972618cae6680d5006b48851509790bb7471f4
+  overlap_cohort:
+    path: ../results/stage5d_assembly/stage5d_overlap_evaluation_cohort.json
+    sha256: 2b945831e9268e1764875a1550b803a02e560b83a3adfdee84aa35fd28f797b3
+  nooverlap_manifest:
+    path: ../results/stage5d_assembly/stage5d_nooverlap_evaluation_manifest.json
+    sha256: 95839d71402f2e0311ffe64640ef9666ed74c21ed362bd4e947ab183b92ccc96
+  stage5c_result:
+    path: ../results/stage5c_fidelity_selector/stage5c_fidelity_selector.json
+    sha256: 948a5a48a1d061c4b86a55296e27e1c51270f0c3eb1f0a0ad37fa690dc81b11f
+  stage4_frozen_stitcher:
+    path: stage4_document_correction_gate.yaml
+    sha256: f02d935f396c6e9a001860c5f1bcbf69565d0405fe5fd79154cce8325fb1e7dd
+  strong_generation_config:
+    path: stage5d_strong.yaml
+    sha256: f69b06919b602e2e79011e7c85c8ee1c27f44a21b3c35c096cd927e9e0c9b5f0
+
+strong_cache: ../results/stage5d_assembly/stage5d_strong_top1_cache.json
+
+geometry:
+  content_tokens: 31
+  stride_tokens: 15
+  nominal_overlap_tokens: 16
+  windows_per_document: 8
+  source_tokens_per_document: 136
+
+selector:
+  rule: maximum_window_embedding_fidelity
+  fidelity_field: Candidate.local_score
+  tie_tolerance: 1.0e-12
+  tie_rule: lower_window_index
+  multiplicity_3_rule: lower_window_index
+  threshold_or_tuning: none
+
+existing_assembly:
+  name: candidate_only_constrained_semiglobal_v1
+  fixed_overlap_owner: left_window
+  max_boundary_shift: 2
+  deviation_cost: 0.5
+
+new_assembly:
+  name: fidelity_owned_candidate_only_constrained_semiglobal_v1
+  alignment_inputs: reconstructed_candidate_ids_only
+  boundary_width_search: 14_to_18_tokens
+  max_boundary_shift: 2
+  deviation_cost: 0.5
+  interior_overlap_owner: frozen_higher_fidelity_view
+  multiplicity_3_overlap_endpoint_owner: lower_window_index
+  inter_boundary_resolution: candidate_coordinate_gap_or_duplicate_width
+  source_tokens_or_positions_used: false
+  ground_truth_alignment_used: false
+  tuned_on_stage5c_holdout: false
+
+evaluation:
+  primary: exact_matched_source_token_recovery_after_ordered_document_alignment
+  secondary: normalized_token_edit_similarity
+  document_exact: descriptive_only
+  bootstrap_iterations: 10000
+  bootstrap_seed: 20260910
+  resampling_unit: frozen_document
+
+gate:
+  PASS: new_assembly_minus_nooverlap_recovery_ci95_lower_gt_zero
+  PARTIAL: >-
+    PASS fails, but new assembly minus frozen-fidelity fixed-coordinate assembly
+    recovery CI95 lower bound is above zero.
+  FAIL: >-
+    Neither PASS nor PARTIAL condition holds; do not tune selector or assembly.
+
+output_dir: results/stage5d_assembly
+result_filename: stage5d_assembly_evaluation.json
+trajectory_filename: stage5d_assembly_trajectories.json
+report_filename: stage5d_assembly_evaluation.md
+
+scope_exclusions:
+  - candidate_generation_change
+  - selector_change
+  - embedding_model_change
+  - lexical_joint_scorer
+  - lambda_or_threshold_tuning
+  - dynamic_programming_path_decoder
+  - learned_or_llm_assembly
+  - pii

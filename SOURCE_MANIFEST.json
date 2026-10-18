@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "snapshot_published_preparation_date": "2026-10-18",
+  "note": "Copied files identify the prepared source snapshot; hashes do not attest historical freeze timing or exclusive authorship. No original Git history is represented.",
+  "files": [
+    {
+      "original_project_path": "src/overlap_poc/__init__.py",
+      "published_path": "src/overlap_poc/__init__.py",
+      "sha256": "afdbb83caef9ae936e1b6df45f864c1a7980ec5299109e9369e4c5d1b7ccc93e",
+      "bytes": 509
+    },
+    {
+      "original_project_path": "src/overlap_poc/chunking.py",
+      "published_path": "src/overlap_poc/chunking.py",
+      "sha256": "c832990762b776438b45a339a745c015bb8f565c0d6aa4dda124d9ee1b6e4061",
+      "bytes": 19216
+    },
+    {
+      "original_project_path": "src/overlap_poc/data.py",
+      "published_path": "src/overlap_poc/data.py",
+      "sha256": "ce5c46e49dd66222b1b874983c22e8b0addfdc53610db57d22fe9374279ddacd",
+      "bytes": 5574
+    },
+    {
+      "original_project_path": "src/overlap_poc/diagnostic_experiment.py",
+      "published_path": "src/overlap_poc/diagnostic_experiment.py",
+      "sha256": "198d406712865c5c4e63130e298af6ca703372fb5d5cc63ff0f048b0a816dcec",
+      "bytes": 20279
+    },
+    {
+      "original_project_path": "src/overlap_poc/diagnostics.py",
+      "published_path": "src/overlap_poc/diagnostics.py",
+      "sha256": "16671984d794d61ba1e42e0993678810eed6ba30b543097f902c812e2ff7e252",
+      "bytes": 40899
+    },
+    {
+      "original_project_path": "src/overlap_poc/pii.py",
+      "published_path": "src/overlap_poc/pii.py",
+      "sha256": "7e49f55194f52a0ac34447a5950403580ee7cf78609dc16b31e5b90b6d41ec9f",
+      "bytes": 5100
+    },
+    {
+      "original_project_path": "src/overlap_poc/reconstruction.py",
+      "published_path": "src/overlap_poc/reconstruction.py",
+      "sha256": "be5d882279b1720505a53f2668fbb1f16ad660cdab5eaeea743c58b9e83bac86",
+      "bytes": 30409
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage1_strong_saturation.py",
+      "published_path": "src/overlap_poc/stage1_strong_saturation.py",
+      "sha256": "f11ccdcaf9278853a1033510d1f5ad94dd636e5e891b277ed484eae1c9fecc91",
+      "bytes": 19976
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage3_longdoc_feasibility.py",
+      "published_path": "src/overlap_poc/stage3_longdoc_feasibility.py",
+      "sha256": "5cf62dd3d3d912e22f6f402fcf949d1b979ea5531ceac8bba5417e3dd9979086",
+      "bytes": 22806
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage3_longdoc_strong.py",
+      "published_path": "src/overlap_poc/stage3_longdoc_strong.py",
+      "sha256": "6940a6b57fa6fe76d7bd9ae4eda6b7cdbe1e96c685b09d07e672a34032aeebed",
+      "bytes": 58243
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage4_document_correction.py",
+      "published_path": "src/overlap_poc/stage4_document_correction.py",
+      "sha256": "4f2c076964848af1f70fbd7558b6a483df657bb74c8f80c35ada0557beebc581",
+      "bytes": 68306
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5_nooverlap.py",
+      "published_path": "src/overlap_poc/stage5_nooverlap.py",
+      "sha256": "cca52e80c05f39a89ce561c98c9f70550d1df22b46906b59e5deb7e793b8a6e4",
+      "bytes": 62023
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5b_evaluate.py",
+      "published_path": "src/overlap_poc/stage5b_evaluate.py",
+      "sha256": "5970c9ca95f88615b8bb4da1c53d729d767243545fc44d0a4259929abe0829db",
+      "bytes": 22313
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5b_holdout.py",
+      "published_path": "src/overlap_poc/stage5b_holdout.py",
+      "sha256": "f1d15814d775b3cbdb8a500502df9aab5a572c9447d80c5f680b0c05fbe7dd4f",
+      "bytes": 14360
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5b_protocol.py",
+      "published_path": "src/overlap_poc/stage5b_protocol.py",
+      "sha256": "a5ecd7e8bd00744ea9e7946d8732a2e17e245e0c257efd3125e4ba1777c0c36b",
+      "bytes": 3169
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5b_strong.py",
+      "published_path": "src/overlap_poc/stage5b_strong.py",
+      "sha256": "58d27bb2f6a79a0f2490f54ac933c70fa4cc1750ab58d4d15554536fbaf3855b",
+      "bytes": 20349
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5c_fidelity_selector.py",
+      "published_path": "src/overlap_poc/stage5c_fidelity_selector.py",
+      "sha256": "c49cac693313e1099d8e8a33184d700f4ef2e7cd8028598477604e7448c9790b",
+      "bytes": 30373
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5d_assembly.py",
+      "published_path": "src/overlap_poc/stage5d_assembly.py",
+      "sha256": "3031d135da9d427d86b867e2cd70b684b97aed66205ebe97a1ba239a9ada2f37",
+      "bytes": 25216
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage5d_holdout.py",
+      "published_path": "src/overlap_poc/stage5d_holdout.py",
+      "sha256": "5d810ab5dcdc065e75973c7c9c8c1a1c259b4eef5eccca4a8230127352965009",
+      "bytes": 11401
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage6a_source_free_assembly.py",
+      "published_path": "src/overlap_poc/stage6a_source_free_assembly.py",
+      "sha256": "f8afe971c16a2edee571eb2b7ef996178eb5d7edd72b577c0f2cc3f548f9ef39",
+      "bytes": 49652
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage6b_freeze.py",
+      "published_path": "src/overlap_poc/stage6b_freeze.py",
+      "sha256": "a2b05a686140b984032decc5af75b2ddc7bc3b911fee523b2effdd990e1bb7ae",
+      "bytes": 16224
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage6c_evaluate.py",
+      "published_path": "src/overlap_poc/stage6c_evaluate.py",
+      "sha256": "ccf96d41f09495e1bfec60bf0f28ff0ec3001332cd6dd800f02d40f38b445520",
+      "bytes": 35001
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage6c_holdout.py",
+      "published_path": "src/overlap_poc/stage6c_holdout.py",
+      "sha256": "f7822775b418869e4433f5395513aaf8c4a24f88f160989bafc6d9b3ef777a86",
+      "bytes": 15739
+    },
+    {
+      "original_project_path": "src/overlap_poc/stage6c_strong.py",
+      "published_path": "src/overlap_poc/stage6c_strong.py",
+      "sha256": "6bff99ba5c5f62a9f0fe5c63b8b26975ff482eac73795b31d4cae08bf88b5544",
+      "bytes": 18550
+    },
+    {
+      "original_project_path": "src/overlap_poc/strong_pool_preflight.py",
+      "published_path": "src/overlap_poc/strong_pool_preflight.py",
+      "sha256": "45b7746df11eec06e6fed33ef948037f81a5acedae85f1eaadd0cbc848b6bbc3",
+      "bytes": 30367
+    },
+    {
+      "original_project_path": "tests/test_chunking.py",
+      "published_path": "tests/test_chunking.py",
+      "sha256": "47672991e357fe087d8199340083dce96bf6837b7c2aa9357bd7faefa9b9f881",
+      "bytes": 1893
+    },
+    {
+      "original_project_path": "tests/test_tokenizer_pairs.py",
+      "published_path": "tests/test_tokenizer_pairs.py",
+      "sha256": "a1903a76325f2691faa7a68707fee14051d4108b77ae1b7af6cd4c31c407eb46",
+      "bytes": 4718
+    },
+    {
+      "original_project_path": "tests/test_diagnostics.py",
+      "published_path": "tests/test_diagnostics.py",
+      "sha256": "adb457d35b74c8d7ac7370dd7570340d6c486b8604700fb4679a3f827a7cbbe5",
+      "bytes": 9369
+    },
+    {
+      "original_project_path": "tests/test_stage1_strong_saturation.py",
+      "published_path": "tests/test_stage1_strong_saturation.py",
+      "sha256": "1abb8bc160ed7d29f1bf47b084ca63618240d4ed442465a264660e45378e9b12",
+      "bytes": 1143
+    },
+    {
+      "original_project_path": "tests/test_stage5b_evaluate.py",
+      "published_path": "tests/test_stage5b_evaluate.py",
+      "sha256": "e5f63cd9d1bdc1fece8a463146869a001ed6ef4f4b108b2a86969e8ffd663fe1",
+      "bytes": 1954
+    },
+    {
+      "original_project_path": "tests/test_stage5c_fidelity_selector.py",
+      "published_path": "tests/test_stage5c_fidelity_selector.py",
+      "sha256": "41dc461c07c3b2c7e1ead7744040753d01a9a53b01d49efea4dd3e7ac61a1348",
+      "bytes": 1574
+    },
+    {
+      "original_project_path": "tests/test_stage5d_assembly.py",
+      "published_path": "tests/test_stage5d_assembly.py",
+      "sha256": "25f366b08953ed53371df60ee379d6e2255280e6f2b999ae3c2e4d67a870c6ba",
+      "bytes": 1615
+    },
+    {
+      "original_project_path": "tests/test_reconstruction.py",
+      "published_path": "tests/test_reconstruction.py",
+      "sha256": "aabc410260eecaf43d17063854b6144d0e83aa49e5a3ecf37ed5b29fa79c3146",
+      "bytes": 2716
+    },
+    {
+      "original_project_path": "tests/test_data.py",
+      "published_path": "tests/test_data.py",
+      "sha256": "94830d2b0ddec1edf2af97602efd2d380ee62781a5de30775d5c390cfa5bcd6f",
+      "bytes": 2189
+    },
+    {
+      "original_project_path": "scripts/run_stage3a_longdoc_feasibility.py",
+      "published_path": "scripts/run_stage3a_longdoc_feasibility.py",
+      "sha256": "ee74747981de98b708a2fff999036193a384dd0aeea993b05640785b14ac27b5",
+      "bytes": 1190
+    },
+    {
+      "original_project_path": "scripts/run_stage5d_assembly.py",
+      "published_path": "scripts/run_stage5d_assembly.py",
+      "sha256": "0cbc3a2d7c716655cf9eb9981c413799d1315049fc67cdb75e129971c2536ab5",
+      "bytes": 467
+    },
+    {
+      "original_project_path": "scripts/run_stage6a_source_free_assembly.py",
+      "published_path": "scripts/run_stage6a_source_free_assembly.py",
+      "sha256": "92635255db7c6315f7e26dd48688a4dd766e82b4d1e32b67604016b75ff5d02c",
+      "bytes": 469
+    },
+    {
+      "original_project_path": "scripts/freeze_stage6b_algorithm.py",
+      "published_path": "scripts/freeze_stage6b_algorithm.py",
+      "sha256": "24dc91e27de26523616437966203202b4702dc4bd57080ca2b62c9f50760308e",
+      "bytes": 431
+    },
+    {
+      "original_project_path": "scripts/freeze_stage6c_final_cohort.py",
+      "published_path": "scripts/freeze_stage6c_final_cohort.py",
+      "sha256": "716c00c32a204949d6e15488e47a7cc4281f3ac2cdea34fe9e5f37784266128a",
+      "bytes": 477
+    },
+    {
+      "original_project_path": "scripts/run_stage6c_strong.py",
+      "published_path": "scripts/run_stage6c_strong.py",
+      "sha256": "0df3094667c1c01d7b6a46fa383bd440a3cd5c75037eb14f457fab5f638d0823",
+      "bytes": 470
+    },
+    {
+      "original_project_path": "scripts/run_stage6c_final_evaluation.py",
+      "published_path": "scripts/run_stage6c_final_evaluation.py",
+      "sha256": "b3960ccb8769eb94a5a795c324b5ad2d753048c272da73a4cdd67dbf32af9f7d",
+      "bytes": 481
+    },
+    {
+      "original_project_path": "configs/poc.yaml",
+      "published_path": "configs/poc.yaml",
+      "sha256": "2f6c6b6d2c50ddc6c33e86c0d69062e17696d84436d491a9eee939966254300b",
+      "bytes": 2061
+    },
+    {
+      "original_project_path": "configs/stage3a_longdoc_feasibility.yaml",
+      "published_path": "configs/stage3a_longdoc_feasibility.yaml",
+      "sha256": "929ac7c9c57dd4101b9a160d5fb50376afe70903f8839f7d31d14dcd1cccde91",
+      "bytes": 229
+    },
+    {
+      "original_project_path": "configs/stage5d_assembly.yaml",
+      "published_path": "configs/stage5d_assembly.yaml",
+      "sha256": "19b574074a95389d89c2ff8915542fc420552202695ed2f98c13d08936184933",
+      "bytes": 3165
+    },
+    {
+      "original_project_path": "configs/stage6a_source_free_assembly.yaml",
+      "published_path": "configs/stage6a_source_free_assembly.yaml",
+      "sha256": "848d4f0b3ee91d4e863f84fcc935fabbbe57163283e8ee92631140ea5824d8cd",
+      "bytes": 2868
+    },
+    {
+      "original_project_path": "configs/stage6b_algorithm_freeze.yaml",
+      "published_path": "configs/stage6b_algorithm_freeze.yaml",
+      "sha256": "1b72ff881458eda3926cfd3668eda40390a35f0b5a9210800244eab77c30d214",
+      "bytes": 9310
+    },
+    {
+      "original_project_path": "configs/stage6c_final_cohort.yaml",
+      "published_path": "configs/stage6c_final_cohort.yaml",
+      "sha256": "b4161164553ad22b8135628ce97416b64f15ebc8cf3e14742390c5bf4daa939d",
+      "bytes": 1691
+    },
+    {
+      "original_project_path": "configs/stage6c_evaluation_protocol.yaml",
+      "published_path": "configs/stage6c_evaluation_protocol.yaml",
+      "sha256": "4ea89f40f20b457c1196b9f562d47059627541b253a2fc460f3d07d3b0854f63",
+      "bytes": 2640
+    },
+    {
+      "original_project_path": "configs/stage6c_strong.yaml",
+      "published_path": "configs/stage6c_strong.yaml",
+      "sha256": "301c4e14995de172d9aaa4990354ae302639d3dfc1d492599f3ed670a85bc2c0",
+      "bytes": 1767
+    },
+    {
+      "original_project_path": "configs/stage6c_evaluate.yaml",
+      "published_path": "configs/stage6c_evaluate.yaml",
+      "sha256": "c478293dbd6ded2c8b97c7154c95876975d7692926885456b43c809ff505ef83",
+      "bytes": 1395
+    },
+    {
+      "original_project_path": "pyproject.toml",
+      "published_path": "pyproject.toml",
+      "sha256": "8508546b0659afab02df028cb82c33dc5cc4e47a020162d69e74c6ad040aa465",
+      "bytes": 1040
+    },
+    {
+      "original_project_path": "requirements.txt",
+      "published_path": "requirements.txt",
+      "sha256": "b437be824c2b2ab84dd416ee4ed200ee523b6b0c13e934b07f919e0f833a5f74",
+      "bytes": 142
+    },
+    {
+      "original_project_path": "paper/submitted/ICISC_2026_paper__52.pdf",
+      "published_path": "paper/ICISC_2026_paper__52.pdf",
+      "sha256": "96c2ebe9e9320fe48e65db3c4cb28d009110eb7462d77d894394b85396d31691",
+      "bytes": 520261
+    },
+    {
+      "original_project_path": "portfolio_draft/C/recruitment_revision_20261018/C_project_summary.md",
+      "published_path": "docs/PROJECT_SUMMARY.ko.md",
+      "sha256": "41898331289af944fc73e3d5d313e259b9e065edaba3a58aac83256ec638b19f",
+      "bytes": 3858
+    }
+  ]
+}

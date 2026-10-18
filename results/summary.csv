@@ -1,0 +1,5 @@
+method,views_per_span,spans,reference_positions,matched_positions,recovery_percent,substitutions,insertions,deletions,total_edits,prediction_positions,exact_spans,exact_span_percent
+FC-L,8,60,8160,7823,95.870098,243,78,94,415,8144,26,43.333333
+FC-F,8,60,8160,8045,98.590686,79,22,36,137,8146,38,63.333333
+CP-L,8,60,8160,7861,96.335784,228,84,71,383,8173,26,43.333333
+CP-F,8,60,8160,8061,98.786765,70,41,29,140,8172,35,58.333333

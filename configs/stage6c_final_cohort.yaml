@@ -1,0 +1,47 @@
+stage: stage6c_final_unseen_cohort_v1
+frozen_after_stage6b: true
+base_config:
+  path: poc.yaml
+  sha256: 2f6c6b6d2c50ddc6c33e86c0d69062e17696d84436d491a9eee939966254300b
+
+algorithm_freeze:
+  path: ../results/stage6b_algorithm_freeze/stage6b_algorithm_freeze.json
+  sha256: d67b0a935d6fcb55ef708f89d8c3b43e2ddb1835466e59022c0e432c514241de
+
+frozen_prior_cohorts:
+  exploratory_0_29:
+    path: ../results/k_longdoc_feasibility/stage3a_nested_cohort.json
+    sha256: 9e7e1a3225c4b7901eb38b842555c09b63383c3a42bf2d833b83e96999bc78bc
+    expected_documents: 30
+    expected_stage: STAGE3A_NESTED_LONG_DOCUMENT_COHORT
+  stage5bc_30_89:
+    path: ../results/stage5b_plan2_holdout/stage5b_overlap_holdout_cohort.json
+    sha256: 934dda81feaea005e5de7b7b0639f029b0c80fb9f6f8f5655ebca3f4b51308e9
+    expected_documents: 60
+    expected_stage: STAGE5B_PLAN2_OVERLAP_HOLDOUT_COHORT
+  stage5d_90_149:
+    path: ../results/stage5d_assembly/stage5d_overlap_evaluation_cohort.json
+    sha256: 2b945831e9268e1764875a1550b803a02e560b83a3adfdee84aa35fd28f797b3
+    expected_documents: 60
+    expected_stage: STAGE5D_PLAN2_OVERLAP_FRESH_EVALUATION_COHORT
+
+cohort_seed: 20260905
+expected_deduplicated_k8_documents: 210
+prior_documents: 150
+selection_start_inclusive: 150
+selection_stop_exclusive: 210
+evaluation_documents: 60
+
+geometry:
+  content_tokens: 31
+  overlap_tokens: 16
+  stride_tokens: 15
+  model_positions: 32
+  source_tokens: 136
+  overlap_windows_per_document: 8
+  nooverlap_windows_per_document: 5
+
+output_dir: results/stage6c_final_validation
+summary_filename: stage6c_cohort_freeze.json
+overlap_filename: stage6c_overlap_final_cohort.json
+nooverlap_filename: stage6c_nooverlap_final_manifest.json

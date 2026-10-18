@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "research_status": {
+    "value": "Submitted to ICISC 2026; under review",
+    "as_of": "2026-10-18",
+    "basis": "Researcher-provided status; not an acceptance claim"
+  },
+  "evaluation": {
+    "dataset": "Natural Questions distributed through BEIR",
+    "language": "English",
+    "selection": "overlap-stable spans",
+    "spans": 60,
+    "reference_positions_per_span": 136,
+    "reference_positions_total": 8160,
+    "content_tokens_per_window": 31,
+    "model_positions_including_eos": 32,
+    "stride": 15,
+    "nominal_overlap": 16,
+    "overlap_views_per_span": 8,
+    "encoder": "GTR-T5-base",
+    "inverter": "public GTR/NQ Vec2Text inverter and corrector",
+    "correction_steps": 50,
+    "sequence_beam_width": 8,
+    "output": "Top-1 per view"
+  },
+  "methods": [
+    {
+      "method": "FC-L",
+      "views_per_span": 8,
+      "spans": 60,
+      "reference_positions": 8160,
+      "matched_positions": 7823,
+      "substitutions": 243,
+      "insertions": 78,
+      "deletions": 94,
+      "total_edits": 415,
+      "prediction_positions": 8144,
+      "exact_spans": 26
+    },
+    {
+      "method": "FC-F",
+      "views_per_span": 8,
+      "spans": 60,
+      "reference_positions": 8160,
+      "matched_positions": 8045,
+      "substitutions": 79,
+      "insertions": 22,
+      "deletions": 36,
+      "total_edits": 137,
+      "prediction_positions": 8146,
+      "exact_spans": 38
+    },
+    {
+      "method": "CP-L",
+      "views_per_span": 8,
+      "spans": 60,
+      "reference_positions": 8160,
+      "matched_positions": 7861,
+      "substitutions": 228,
+      "insertions": 84,
+      "deletions": 71,
+      "total_edits": 383,
+      "prediction_positions": 8173,
+      "exact_spans": 26
+    },
+    {
+      "method": "CP-F",
+      "views_per_span": 8,
+      "spans": 60,
+      "reference_positions": 8160,
+      "matched_positions": 8061,
+      "substitutions": 70,
+      "insertions": 41,
+      "deletions": 29,
+      "total_edits": 140,
+      "prediction_positions": 8172,
+      "exact_spans": 35
+    }
+  ],
+  "interpretation": {
+    "FC-F_vs_FC-L": "Post-hoc exploratory ownership-only comparison on the same frozen views and fixed-coordinate handling.",
+    "CP-F_vs_FC-F": "Whole-method comparison with a recovery/edit tradeoff.",
+    "CP-F_vs_CP-L": "Whole-method comparison: ownership and boundary inputs both change.",
+    "source_free": "Assembly does not receive reference tokens; evaluation and oracle diagnostics do.",
+    "generalization": "Specific matched encoder/inverter and overlap-stable English subset; not full-document exact recovery."
+  },
+  "provenance": {
+    "original_aggregate_path": "results/claim_b_20260915/analysis/sequence_run_codefix/sequence_summary.json",
+    "original_aggregate_sha256": "1eb1d1fe29806acace899871bbdbaf9a7551b2e41fd867954539fe55b874eff8",
+    "paper_path": "paper/ICISC_2026_paper__52.pdf",
+    "paper_sha256": "96c2ebe9e9320fe48e65db3c4cb28d009110eb7462d77d894394b85396d31691",
+    "reported_paper_table": "Table 4, PDF page 15",
+    "publication_preparation": "Projected aggregate integer fields only; no passage identifiers, corpus text, token arrays, model outputs, embeddings, or checkpoints."
+  }
+}

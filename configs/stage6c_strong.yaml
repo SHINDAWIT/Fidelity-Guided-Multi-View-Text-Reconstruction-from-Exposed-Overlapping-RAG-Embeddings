@@ -1,0 +1,46 @@
+stage: stage6c_final_strong_top1_v1
+frozen_after_stage6b: true
+base_config:
+  path: poc.yaml
+  sha256: 2f6c6b6d2c50ddc6c33e86c0d69062e17696d84436d491a9eee939966254300b
+
+inputs:
+  algorithm_freeze:
+    path: ../results/stage6b_algorithm_freeze/stage6b_algorithm_freeze.json
+    sha256: d67b0a935d6fcb55ef708f89d8c3b43e2ddb1835466e59022c0e432c514241de
+  cohort_freeze:
+    path: ../results/stage6c_final_validation/stage6c_cohort_freeze.json
+    sha256: 588b6436aa7e09906ad0e0b99ebf7a1854d879793d47075069623cf888228b62
+  overlap_cohort:
+    path: ../results/stage6c_final_validation/stage6c_overlap_final_cohort.json
+    sha256: 357fc5457f107373479179ae9bb90715c1a44bc7811fc6d89a2b9443a96a1e2d
+  nooverlap_manifest:
+    path: ../results/stage6c_final_validation/stage6c_nooverlap_final_manifest.json
+    sha256: d1f8bec0e5ef8c70ae552ae753a9742af05a7405374d57e2c2fee4f8e49177b7
+
+output_dir: results/stage6c_final_validation
+canonical_manifest_filename: stage6c_canonical_view_manifest.json
+embedding_cache_filename: stage6c_target_embeddings.npy
+embedding_metadata_filename: stage6c_target_embeddings.json
+checkpoint_filename: stage6c_strong_checkpoint.json
+cache_filename: stage6c_strong_top1_cache.json
+
+expected_documents: 60
+expected_overlap_views: 480
+expected_nooverlap_views: 300
+expected_shared_views: 60
+expected_unique_views: 720
+embedding_batch_size: 64
+minimum_cuda_free_gib_before_load: 8
+progress_every_views: 10
+
+strong_setting:
+  correction_steps: 50
+  sequence_beam_width: 8
+  top_n: 1
+  label: repository_strong_reproduction_not_original_paper_beam_claim
+
+forbidden_reuse:
+  - results/stage5d_assembly/stage5d_strong_checkpoint.json
+  - results/stage5d_assembly/stage5d_target_embeddings.npy
+  - results/stage5d_assembly/stage5d_strong_top1_cache.json

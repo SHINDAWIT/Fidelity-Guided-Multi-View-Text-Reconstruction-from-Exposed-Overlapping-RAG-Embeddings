@@ -1,0 +1,76 @@
+stage: stage6c_final_evaluation_protocol_v1
+frozen_before_stage6c_inversion: true
+
+cohort:
+  deterministic_sha_order_start_inclusive: 150
+  deterministic_sha_order_stop_exclusive: 210
+  documents: 60
+  source_tokens_per_document: 136
+
+primary_metric:
+  name: gt_aligned_exact_source_token_recovery
+  ground_truth_use: evaluation_only
+  deterministic_alignment: unit_cost_levenshtein_with_frozen_traceback
+
+methods:
+  nooverlap_strong: concatenate_ordered_nooverlap_top1_candidates
+  overlap_fixed_owner: source_aligned_lower_window_index_diagnostic
+  constrained_fixed_owner: constrained_suffix_prefix_left_owner_sequence
+  fixed_coordinate_fidelity: nominal_31_15_coordinates_with_higher_local_score
+  source_free_progressive_proposed: accumulated_progressive_stage6a_v2
+  source_aligned_fidelity: diagnostic_ceiling_only
+  best_of_views_oracle: oracle_ceiling_only
+
+negative_controls:
+  scope: source_aligned_selector_diagnostic_only
+  shuffled_fidelity: next_document_cyclic_same_window_index
+  nonadjacent_fidelity: same_document_window_index_plus_2_mod_8
+  document_order_is_part_of_definition: true
+
+bootstrap:
+  iterations: 10000
+  seed: 20260910
+  unit: final_validation_document
+  interval: percentile_2.5_97.5
+
+realization:
+  gap: source_aligned_fidelity_minus_source_free_progressive
+  gain_recovery_ratio: >-
+    (source_free_progressive - source_aligned_fixed_owner) /
+    (source_aligned_fidelity - source_aligned_fixed_owner)
+  substantial_gain_recovery_threshold: 0.5
+
+sequence_guard:
+  proposed_normalized_similarity_gte_nooverlap: true
+  proposed_total_edit_distance_lte_nooverlap: true
+
+final_gate:
+  DOCUMENT_ATTACK_PASS:
+    - proposed_minus_nooverlap_point_gt_zero
+    - proposed_minus_nooverlap_ci95_lower_gt_zero
+    - proposed_minus_source_aligned_fixed_owner_ci95_lower_gt_zero
+    - gain_recovery_ratio_gte_0.5
+    - sequence_guard_pass
+    - local_fidelity_selector_ci95_lower_gt_zero
+    - shuffled_selector_ci95_lower_lte_zero
+    - nonadjacent_selector_ci95_lower_lte_zero
+  OVERLAP_ASSEMBLY_ONLY_PASS:
+    - proposed_minus_nooverlap_point_gte_zero
+    - proposed_minus_nooverlap_ci95_includes_zero
+    - proposed_minus_source_aligned_fixed_owner_ci95_lower_gt_zero
+    - gain_recovery_ratio_gte_0.5
+    - sequence_guard_pass
+    - local_fidelity_selector_ci95_lower_gt_zero
+    - shuffled_selector_ci95_lower_lte_zero
+    - nonadjacent_selector_ci95_lower_lte_zero
+  DOCUMENT_ATTACK_FAIL: otherwise
+
+post_final_prohibitions:
+  - parameter_tuning
+  - global_dp_or_path
+  - new_gap_heuristic
+  - fidelity_threshold_search
+  - new_fidelity_combination
+  - failed_document_exclusion
+  - source_span_reselection
+

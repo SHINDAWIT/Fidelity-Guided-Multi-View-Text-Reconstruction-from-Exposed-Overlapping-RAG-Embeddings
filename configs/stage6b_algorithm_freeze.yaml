@@ -1,0 +1,221 @@
+stage: stage6b_algorithm_freeze_v1
+freeze_target: stage6a_accumulated_progressive_source_free_pairwise
+frozen_before_stage6c_outputs_inspected: true
+
+artifacts:
+  stage6a_result:
+    path: ../results/stage6a_source_free_assembly/stage6a_source_free_assembly.json
+    sha256: f5c5fcc591f520266f6fdfc36f072b3386a18bd1b7e653bfbbcaf1537a5c2ab9
+  stage6a_trajectories:
+    path: ../results/stage6a_source_free_assembly/stage6a_source_free_assembly_trajectories.json
+    sha256: fd3c88cd2278dc8ee71fc2adaed49e6f9bece0f6fab40996178519097fc95120
+  stage6a_report:
+    path: ../results/stage6a_source_free_assembly/stage6a_source_free_assembly.md
+    sha256: f936db418f4df105339f2de1e5ff14b6f9708643d55cb21347a5b9d0ea608ffb
+  stage6a_config:
+    path: stage6a_source_free_assembly.yaml
+    sha256: 848d4f0b3ee91d4e863f84fcc935fabbbe57163283e8ee92631140ea5824d8cd
+  exploratory_overlap_cohort:
+    path: ../results/k_longdoc_feasibility/stage3a_nested_cohort.json
+    sha256: 9e7e1a3225c4b7901eb38b842555c09b63383c3a42bf2d833b83e96999bc78bc
+  exploratory_overlap_strong_cache:
+    path: ../results/k_longdoc_strong/stage3bc_strong_top1_cache.json
+    sha256: c461497900f87a2bc269fd41ae0a13db6f4fd59c98c3cc2473a0f91a4037391f
+  exploratory_nooverlap_manifest:
+    path: ../results/stage5a_nooverlap_strong/stage5a_nooverlap_manifest.json
+    sha256: 96108281b3b261ca597db3070a85b790edebf1b04044265b17ffff8bb693a439
+  exploratory_nooverlap_strong_cache:
+    path: ../results/stage5a_nooverlap_strong/stage5a_nooverlap_strong_top1_cache.json
+    sha256: 799f0ac490b6ee5d506cb98bae551ecd8bb3996146bb30d6817611fe7b34c9ee
+  base_protocol:
+    path: poc.yaml
+    sha256: 2f6c6b6d2c50ddc6c33e86c0d69062e17696d84436d491a9eee939966254300b
+  stage5bc_overlap_cohort:
+    path: ../results/stage5b_plan2_holdout/stage5b_overlap_holdout_cohort.json
+    sha256: 934dda81feaea005e5de7b7b0639f029b0c80fb9f6f8f5655ebca3f4b51308e9
+  stage5d_overlap_cohort:
+    path: ../results/stage5d_assembly/stage5d_overlap_evaluation_cohort.json
+    sha256: 2b945831e9268e1764875a1550b803a02e560b83a3adfdee84aa35fd28f797b3
+
+code:
+  inference:
+    stage6a_source_free_assembly:
+      path: ../src/overlap_poc/stage6a_source_free_assembly.py
+      sha256: f8afe971c16a2edee571eb2b7ef996178eb5d7edd72b577c0f2cc3f548f9ef39
+    diagnostics:
+      path: ../src/overlap_poc/diagnostics.py
+      sha256: 16671984d794d61ba1e42e0993678810eed6ba30b543097f902c812e2ff7e252
+    reconstruction:
+      path: ../src/overlap_poc/reconstruction.py
+      sha256: be5d882279b1720505a53f2668fbb1f16ad660cdab5eaeea743c58b9e83bac86
+  evaluation:
+    stage6c_evaluate:
+      path: ../src/overlap_poc/stage6c_evaluate.py
+      sha256: ccf96d41f09495e1bfec60bf0f28ff0ec3001332cd6dd800f02d40f38b445520
+    stage4_document_correction:
+      path: ../src/overlap_poc/stage4_document_correction.py
+      sha256: 4f2c076964848af1f70fbd7558b6a483df657bb74c8f80c35ada0557beebc581
+    stage5c_fidelity_selector:
+      path: ../src/overlap_poc/stage5c_fidelity_selector.py
+      sha256: c49cac693313e1099d8e8a33184d700f4ef2e7cd8028598477604e7448c9790b
+    stage5d_assembly:
+      path: ../src/overlap_poc/stage5d_assembly.py
+      sha256: 3031d135da9d427d86b867e2cd70b684b97aed66205ebe97a1ba239a9ada2f37
+    stage3_longdoc_strong:
+      path: ../src/overlap_poc/stage3_longdoc_strong.py
+      sha256: 6940a6b57fa6fe76d7bd9ae4eda6b7cdbe1e96c685b09d07e672a34032aeebed
+  orchestration:
+    stage6b_freeze:
+      path: ../src/overlap_poc/stage6b_freeze.py
+      sha256: a2b05a686140b984032decc5af75b2ddc7bc3b911fee523b2effdd990e1bb7ae
+    stage6c_holdout:
+      path: ../src/overlap_poc/stage6c_holdout.py
+      sha256: f7822775b418869e4433f5395513aaf8c4a24f88f160989bafc6d9b3ef777a86
+    stage6c_strong:
+      path: ../src/overlap_poc/stage6c_strong.py
+      sha256: 6bff99ba5c5f62a9f0fe5c63b8b26975ff482eac73795b31d4cae08bf88b5544
+    chunking:
+      path: ../src/overlap_poc/chunking.py
+      sha256: c832990762b776438b45a339a745c015bb8f565c0d6aa4dda124d9ee1b6e4061
+    data:
+      path: ../src/overlap_poc/data.py
+      sha256: ce5c46e49dd66222b1b874983c22e8b0addfdc53610db57d22fe9374279ddacd
+    diagnostic_experiment:
+      path: ../src/overlap_poc/diagnostic_experiment.py
+      sha256: 198d406712865c5c4e63130e298af6ca703372fb5d5cc63ff0f048b0a816dcec
+    stage1_strong_saturation:
+      path: ../src/overlap_poc/stage1_strong_saturation.py
+      sha256: f11ccdcaf9278853a1033510d1f5ad94dd636e5e891b277ed484eae1c9fecc91
+    stage3_longdoc_feasibility:
+      path: ../src/overlap_poc/stage3_longdoc_feasibility.py
+      sha256: 5cf62dd3d3d912e22f6f402fcf949d1b979ea5531ceac8bba5417e3dd9979086
+    stage5_nooverlap:
+      path: ../src/overlap_poc/stage5_nooverlap.py
+      sha256: cca52e80c05f39a89ce561c98c9f70550d1df22b46906b59e5deb7e793b8a6e4
+    stage5b_holdout:
+      path: ../src/overlap_poc/stage5b_holdout.py
+      sha256: f1d15814d775b3cbdb8a500502df9aab5a572c9447d80c5f680b0c05fbe7dd4f
+    stage5b_strong:
+      path: ../src/overlap_poc/stage5b_strong.py
+      sha256: 58d27bb2f6a79a0f2490f54ac933c70fa4cc1750ab58d4d15554536fbaf3855b
+    stage5d_holdout:
+      path: ../src/overlap_poc/stage5d_holdout.py
+      sha256: 5d810ab5dcdc065e75973c7c9c8c1a1c259b4eef5eccca4a8230127352965009
+
+protocols:
+  stage6c_evaluation_protocol:
+    path: stage6c_evaluation_protocol.yaml
+    sha256: 4ea89f40f20b457c1196b9f562d47059627541b253a2fc460f3d07d3b0854f63
+  pyproject:
+    path: ../pyproject.toml
+    sha256: 8508546b0659afab02df028cb82c33dc5cc4e47a020162d69e74c6ad040aa465
+  requirements:
+    path: ../requirements.txt
+    sha256: b437be824c2b2ab84dd416ee4ed200ee523b6b0c13e934b07f919e0f833a5f74
+
+algorithm:
+  implementation_version: stage6a-source-free-progressive-pairwise-assembly-v2
+  method_name: accumulated_progressive_fidelity_owned_constrained_semiglobal_v1
+  merge_order: merge_accumulated_output_with_next_window
+  alignment_algorithm: constrained_semiglobal_token_levenshtein
+  alignment_inputs: reconstructed_top1_token_ids_only
+  allowed_alignment_region: adjacent_suffix_prefix_only
+  content_tokens: 31
+  stride_tokens: 15
+  nominal_overlap_tokens: 16
+  allowed_overlap_width_tokens: [14, 15, 16, 17, 18]
+  max_boundary_shift: 2
+  match_cost: 0.0
+  substitution_cost: 1.0
+  gap_cost: 1.0
+  overlap_width_deviation_cost: 0.5
+  boundary_objective: edit_distance_plus_0.5_times_total_absolute_width_deviation_from_16
+  boundary_tie_break_order:
+    - objective
+    - total_width_deviation
+    - edit_distance
+    - absolute_right_width_deviation
+    - absolute_left_width_deviation
+    - longer_right_width
+    - first_encountered_smaller_left_width
+  token_alignment_traceback_priority:
+    - exact_match_diagonal
+    - substitution_diagonal
+    - left_token_to_gap
+    - gap_to_right_token
+  progressive_left_boundary_fidelity: immediately_preceding_original_window_local_score
+  match_handling: emit_once
+  substitution_handling: emit_token_from_fidelity_owner
+  gap_handling: emit_fidelity_owner_token_if_non_null_otherwise_omit
+  fidelity_field: Candidate.local_score
+  fidelity_rule: maximum_window_embedding_fidelity
+  fidelity_tie_tolerance: 1.0e-12
+  fidelity_tie_break: lower_window_index
+  multiplicity_3_endpoint_rule: lower_window_index
+  third_view_handling: multiplicity_3_endpoints_keep_lower_window_index
+  global_method: none
+  learned_parameters: none
+  ground_truth_or_source_position_used_by_inference: false
+  candidate_local_score_definition: cosine_similarity_of_final_hypothesis_embedding_to_target_embedding
+  candidate_top1_invariant: public_top1_exactly_matches_instrumented_argmax_local_score
+
+evaluation:
+  primary_metric: exact_matched_source_token_recovery_after_final_gt_alignment
+  normalized_sequence_similarity: one_minus_unit_edit_distance_over_reference_length_clipped_at_zero
+  edit_operations: unit_cost_insertion_deletion_substitution
+  bootstrap_iterations: 10000
+  bootstrap_seed: 20260910
+  bootstrap_unit: document
+  gate_state_required: SOURCE_FREE_ASSEMBLY_READY
+
+dataset:
+  source: natural_questions
+  name: BeIR/nq
+  config: corpus
+  split: corpus
+  revision: b7253e6c379163d024ddb1d6948152a91a2e3b46
+
+models:
+  embedder_name: sentence-transformers/gtr-t5-base
+  embedder_revision: 9801579ce813fb37541e6098dffd17959fffcd6e
+  inversion_checkpoint: jxm/gtr__nq__32
+  inversion_revision: 50ec60382fe46fde9eb4fba60b1b4c6ff2c0c9e7
+  corrector_checkpoint: jxm/gtr__nq__32__correct
+  corrector_revision: f3592b1f0dc6b84a3f1524f80259ebda958b6487
+  strong_setting: correction50+sbeam8
+  correction_steps: 50
+  sequence_beam_width: 8
+  top_n: 1
+  maximum_model_positions: 32
+
+tokenizer:
+  name: sentence-transformers/gtr-t5-base
+  revision: 9801579ce813fb37541e6098dffd17959fffcd6e
+  implementation: transformers.AutoTokenizer
+  reconstructed_text_retokenization:
+    add_special_tokens: false
+    truncation: false
+    eos_and_pad_removed_from_content_ids: true
+  fast_required: true
+  content_tokens: 31
+  eos_tokens: 1
+
+dependencies:
+  python: 3.11.16
+  packages:
+    PyYAML: 6.0.3
+    numpy: 1.26.4
+    tokenizers: 0.14.1
+    transformers: 4.34.1
+    torch: 2.12.1+cu130
+    datasets: 2.14.6
+    vec2text: 0.0.13
+
+repository:
+  commit: null
+  commit_status: unavailable_not_a_git_worktree
+  git_probe_performed_by_freeze: false
+
+output:
+  directory: ../results/stage6b_algorithm_freeze
+  filename: stage6b_algorithm_freeze.json

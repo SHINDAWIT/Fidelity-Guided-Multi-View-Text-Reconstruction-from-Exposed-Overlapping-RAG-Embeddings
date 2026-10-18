@@ -1,0 +1,7 @@
+base_config: poc.yaml
+k2_reference_artifact: ../results/k2_stage2_compute_budget/stage2_compute_budget.json
+output_dir: results/k_longdoc_feasibility
+
+k_values: [2, 3, 4, 6, 8]
+target_nested_cohort_size: 30
+cohort_seed: 20260905

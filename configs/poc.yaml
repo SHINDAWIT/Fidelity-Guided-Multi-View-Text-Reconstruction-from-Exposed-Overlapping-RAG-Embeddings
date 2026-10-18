@@ -1,0 +1,81 @@
+experiment_name: gtr32_overlap16_k2_prejoint_diagnostic
+seed: 20260904
+output_dir: results/k2_diagnostic_current
+
+dataset:
+  source: natural_questions
+  name: BeIR/nq
+  config: corpus
+  split: corpus
+  revision: b7253e6c379163d024ddb1d6948152a91a2e3b46
+  streaming: true
+  scan_limit: 1000
+  acceptance_yield_floor: 0.80
+
+geometry:
+  model_positions: 32
+  content_tokens: 31
+  eos_tokens: 1
+  overlap_tokens: 16
+  stride_tokens: 15
+  windows_per_pair: 2
+  union_reference_tokens: 46
+  drop_partial_tail: true
+
+models:
+  embedder_name: sentence-transformers/gtr-t5-base
+  embedder_revision: 9801579ce813fb37541e6098dffd17959fffcd6e
+  inversion_checkpoint: jxm/gtr__nq__32
+  inversion_revision: 50ec60382fe46fde9eb4fba60b1b4c6ff2c0c9e7
+  corrector_checkpoint: jxm/gtr__nq__32__correct
+  corrector_revision: f3592b1f0dc6b84a3f1524f80259ebda958b6487
+  device: cuda
+  embedding_dtype: float32
+
+# Pre-audit PoC policy: final endpoint from each correction setting, unique
+# Top-N by F. Step 0 has no sequence beam; steps 1 and 2 use sbeam width 3.
+candidate_generation:
+  profile_name: current_repository_trajectory_endpoints
+  top_n: 3
+  batch_size: 4
+  settings:
+    - id: base_0
+      correction_steps: 0
+      sequence_beam_width: 0
+    - id: correct_1_sbeam3
+      correction_steps: 1
+      sequence_beam_width: 3
+    - id: correct_2_sbeam3
+      correction_steps: 2
+      sequence_beam_width: 3
+
+strong_baseline_reference:
+  setting_id: vec2text_50_sbeam8
+  correction_steps: 50
+  sequence_beam_width: 8
+  batch_size: 1
+  note: Supported by the current upstream API but not automatically run for 30 pairs.
+
+partitions:
+  seed: 20260904
+  sizes:
+    preflight: 3
+    diagnostic: 30
+    dev: 20
+    heldout: 100
+
+diagnostic:
+  stitch_minimum_alignment: 0.5
+  bootstrap_seed: 20260904
+  bootstrap_iterations: 10000
+  oracle_floor: 0.60
+  independent_saturation: 0.90
+  minimum_headroom: 0.043478260869565216  # 2 / 46
+  minimum_signal_fraction: 0.60
+
+scope_exclusions:
+  - vector_db
+  - hnsw_ivf_ann
+  - pq_int8_quantization
+  - gaussian_noise_dp
+  - late_chunking
