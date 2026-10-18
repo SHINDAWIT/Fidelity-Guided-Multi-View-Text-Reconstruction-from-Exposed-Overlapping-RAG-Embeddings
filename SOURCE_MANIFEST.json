@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "snapshot_published_preparation_date": "2026-10-18",
-  "note": "Copied files identify the prepared source snapshot; hashes do not attest historical freeze timing or exclusive authorship. No original Git history is represented.",
+  "note": "Tracks source snapshot files and the current project summary. Edited document entries retain their original fingerprints.",
   "files": [
     {
       "original_project_path": "src/overlap_poc/__init__.py",
@@ -324,8 +324,11 @@
     {
       "original_project_path": "portfolio_draft/C/recruitment_revision_20261018/C_project_summary.md",
       "published_path": "docs/PROJECT_SUMMARY.ko.md",
-      "sha256": "41898331289af944fc73e3d5d313e259b9e065edaba3a58aac83256ec638b19f",
-      "bytes": 3858
+      "sha256": "df15416f058a98c2b40a2b3e68b814e8f0166c4eff4432fa347f981a4da07bf6",
+      "bytes": 3848,
+      "original_sha256": "41898331289af944fc73e3d5d313e259b9e065edaba3a58aac83256ec638b19f",
+      "original_bytes": 3858,
+      "modification": "Project-summary wording revised; original document fingerprint retained."
     }
   ]
 }

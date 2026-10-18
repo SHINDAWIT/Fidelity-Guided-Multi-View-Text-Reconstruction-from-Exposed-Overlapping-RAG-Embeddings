@@ -2,7 +2,7 @@
 
 [처음으로](../README.md) · [논문](../paper/ICISC_2026_paper__52.pdf) · [실험·결과](EXPERIMENTS.md)
 
-이 공개본의 src·scripts·configs·tests는 원본에서 선별해 바이트 변경 없이 복사한 snapshot입니다. 파일별 원본 상대경로와 SHA-256은 [SOURCE_MANIFEST.json](../SOURCE_MANIFEST.json)에 있습니다. 초기 공개 commit의 날짜를 연구 시작·개발 기간이나 과거 동결 시점으로 해석하지 않습니다.
+연구 코드의 입력 검증, 기존 모델 연동, 출력 선택·결합과 평가 흐름을 설명합니다. src·scripts·configs·tests는 원본 그대로 보존했으며, 파일별 원본 상대경로와 SHA-256은 [SOURCE_MANIFEST.json](../SOURCE_MANIFEST.json)에 기록했습니다.
 
 ## 1. 입력 표현과 기존 모델의 계약
 
@@ -44,7 +44,7 @@ generate_final_sbeam_candidate_pools는 기존 최종 후보를 관찰하고 공
 편집 거리 + 0.5 × (|왼쪽 폭 − 16| + |오른쪽 폭 − 16|)
 ```
 
-폭과 비용은 개발 시 정한 heuristic입니다. 학습한 값이나 최적값 탐색 결과로 설명하지 않습니다. 정렬 후 owner의 토큰을 사용하고 owner 쪽이 비어 있으면 해당 열을 생략합니다. 내부 삼중 관측 endpoint에는 앞쪽 토큰 유지 규칙이 있습니다.
+폭과 비용은 개발 시 정한 heuristic입니다. 정렬 후 owner의 토큰을 사용하고 owner 쪽이 비어 있으면 해당 열을 생략합니다. 내부 삼중 관측 endpoint에는 앞쪽 토큰 유지 규칙이 있습니다.
 
 누적 출력의 왼쪽 점수에는 **직전 원래 view의 점수**를 대리값으로 사용합니다. 토큰별 provenance 점수를 추적하는 구조가 아닙니다.
 
@@ -66,7 +66,7 @@ FC–F와 CP–F는 경계 추정·길이 처리도 달라집니다. CP–L 역�
 
 [stage6c_strong.py](../src/overlap_poc/stage6c_strong.py#L149)의 _fingerprint는 알고리즘·코호트·입력 manifest·임베딩·모델 설정·추론 조건을 연결합니다.
 
-_load_checkpoint는 식별값, 후보·record·완료 key의 길이, 예정 순서의 prefix와 완료 목록이 같은지를 확인하고 불일치하면 재개를 거부합니다. 이 문서는 코드의 조건을 설명하며, 실제 운영 장애 복구·무중단 운영 실적을 주장하지 않습니다.
+_load_checkpoint는 식별값, 후보·record·완료 key의 길이, 예정 순서의 prefix와 완료 목록이 같은지를 확인하고 불일치하면 재개를 거부합니다.
 
 ## 주요 실행 진입점
 

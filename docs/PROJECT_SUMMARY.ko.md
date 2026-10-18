@@ -1,13 +1,14 @@
 # 중첩 임베딩 복원 결과의 선택·결합과 변경 영향 검증
 
-**원래 논문 제목:** Fidelity-Guided Multi-View Text Reconstruction from Exposed Overlapping RAG Embeddings  
-**연구 상태:** ICISC 2026 투고·심사 중
+**논문 제목:** Fidelity-Guided Multi-View Text Reconstruction from Exposed Overlapping RAG Embeddings
+
+**논문:** ICISC 2026 투고·심사 중(2026-10-18 기준)
 
 ### 해결하려던 문제
 
 노출된 중첩 RAG 임베딩을 기존 모델로 각각 역복원하면 같은 원문 부분에 여러 출력이 생기지만, 삽입·삭제 오류로 위치가 어긋나 단순 연결 시 중복과 경계 오류가 발생했습니다. 이 연구에서는 기존 모델의 여러 출력 중 어떤 결과를 선택하고 어떻게 결합할지 다뤘습니다.
 
-### 본인 담당 작업
+### 담당 업무
 
 연구를 직접 수행하며 기존 Vec2Text의 입력·추론 구조를 확인하고, 복원 결과의 선택·결합과 비교 평가를 다뤘습니다. 입력 표현 차이와 복원 오류를 구분하고, 결합 규칙 변경이 복원율과 오류 유형에 미치는 영향을 분석했습니다. 공개 사전학습 모델의 후보 생성·교정과 기존 임베딩 일치도 점수를 활용했으며, 프로젝트에 추가된 입력 검증·결합·평가 처리를 중심으로 연구했습니다.
 
@@ -25,6 +26,6 @@ Natural Questions의 동일한 60개 평가 구간에서 구간당 136개, 총 8
 
 선택 규칙 비교는 동일 표본의 사후 탐색 분석이며, 복원율은 문서 전체 완전 복원율과 구분했습니다. 결과는 특정 GTR/Vec2Text 모델과 토큰화가 안정적인 영어 구간에 한정해 해석했습니다.
 
-### 실제 사용 기술
+### 사용 기술
 
 Python(입력·결합·평가), Vec2Text(기존 역복원), PyTorch 기반 GPU 추론(CUDA 환경), Transformers·tokenizers(토큰화·입력 검증), Hugging Face datasets(평가 자료 로드), NumPy·YAML·JSON(배열·설정·결과 관리), Linux(실험 실행 환경)를 사용했습니다.

@@ -3,9 +3,9 @@
 
 중첩된 임베딩의 여러 복원 결과를 선택·결합하고, 입력 조건과 변경 영향을 분석한 연구입니다.
 
-[논문 PDF](paper/ICISC_2026_paper__52.pdf) · [채용용 한 쪽 소개](docs/PROJECT_SUMMARY.ko.md) · [구현 안내](docs/IMPLEMENTATION.md) · [실험과 결과](docs/EXPERIMENTS.md) · [English](README.en.md)
+[논문 PDF](paper/ICISC_2026_paper__52.pdf) · [프로젝트 소개서](docs/PROJECT_SUMMARY.ko.md) · [구현 안내](docs/IMPLEMENTATION.md) · [실험과 결과](docs/EXPERIMENTS.md) · [English](README.en.md)
 
-**연구 상태:** ICISC 2026 투고·심사 중 — 연구자 제공 정보, 2026-10-18 기준.
+**논문:** ICISC 2026 투고·심사 중(2026-10-18 기준).
 
 ## 30초로 읽는 연구
 
@@ -48,11 +48,11 @@ flowchart LR
 
 결합은 복원 결과·점수·알려진 구간 배치만 사용합니다. 원문과 oracle를 사용하는 분석은 사후 평가·진단입니다.
 
-## 담당 경험과 사용 기술
+## 담당 업무와 사용 기술
 
 연구를 직접 수행하며 기존 Vec2Text의 입력·추론 구조를 확인하고, 복원 결과의 선택·결합과 비교 평가를 다뤘습니다. 입력 표현 차이와 복원 오류를 구분하고, 결합 규칙이 오류 유형에 미치는 영향을 분석했습니다.
 
-| 기술 | 실제 사용 방식 |
+| 기술 | 사용 방식 |
 | --- | --- |
 | Python | 입력 검증·선택·결합·평가 파이프라인 |
 | Vec2Text | 공개 사전학습 역복원 모델과 기존 점수 활용 |
@@ -62,12 +62,12 @@ flowchart LR
 | NumPy / YAML / JSON | 임베딩 배열·설정·결과·중간 상태 저장 |
 | Linux | 연구 실험 실행 환경 |
 
-기존 소프트웨어의 입력·호출 계약 이해, 오류 원인 구분, 기능 변경의 영향 검증을 보여 주는 연구 경험입니다. 자세한 설명은 [채용용 소개](docs/PROJECT_SUMMARY.ko.md)에 담았습니다.
+입력·호출 계약을 분석하고 오류 원인을 구분하며, 결합 규칙 변경의 영향을 검증했습니다. 자세한 연구 과정은 [프로젝트 소개서](docs/PROJECT_SUMMARY.ko.md)에 정리했습니다.
 
 ## 저장소 둘러보기
 
 ```text
-paper/ICISC_2026_paper__52.pdf   제공된 논문 PDF
+paper/ICISC_2026_paper__52.pdf   논문 PDF
 docs/                          연구 소개·구현·실험·재현 범위
 src/overlap_poc/                원본 핵심 코드와 필요한 내부 의존 모듈
 scripts/                       선별한 기존 실험 실행 진입점
@@ -91,8 +91,8 @@ python3 tools/verify_summary.py
 
 - 공개본에는 코드·관련 설정·기존 테스트와 집계 수치를 담았습니다. 원시 corpus, 실제 복원문·token arrays, 임베딩, 모델 가중치, 중간 checkpoint는 포함하지 않았습니다.
 - 이 저장소만으로 논문의 end-to-end GPU 실험이나 원시 출력의 재채점을 재현할 수는 없습니다. 원본 runner의 일부 설정은 공개하지 않은 frozen artifact를 참조합니다.
-- 이번 공개 준비에서는 연구 코드·기존 테스트·GPU 추론을 실행하지 않았습니다. 기존 테스트의 존재를 이번 통과 결과로 표시하지 않습니다.
-- 결과는 특정 GTR/Vec2Text 조합과 토큰화가 안정적인 영어 NQ 구간에 한정됩니다. 새 역복원 모델·신뢰도 모델을 학습한 결과가 아닙니다.
+- 공개 검산 명령은 집계 산술·파일 일관성을 검사합니다. 기존 테스트와 GPU 추론은 별도의 실행환경이 필요합니다.
+- 결과는 공개 사전학습 GTR/Vec2Text 조합과 토큰화가 안정적인 영어 NQ 구간에 한정됩니다.
 - overlap/no-overlap의 8개 대 5개 벡터 비교는 동일 계산 예산의 비교가 아닙니다.
 
 [환경 기록·테스트 범위·재현 수준](docs/REPRODUCIBILITY.md) · [자료 범위와 출처](NOTICE.md)
